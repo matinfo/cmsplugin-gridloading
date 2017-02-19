@@ -7,7 +7,6 @@ Cascading grid layout (image or/and text) wall library by Masonry,
 
 See original demos: https://tympanus.net/Development/GridLoadingEffects/
 
-===
 
 .. image:: https://travis-ci.org/matinfo/cmsplugin-gridloading.svg?branch=master
     :target: https://travis-ci.org/matinfo/cmsplugin-gridloading
