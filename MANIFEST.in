@@ -1,5 +1,3 @@
 include LICENSE
-recursive-include */boilerplates *
 recursive-include */templates *
 recursive-include */static *
-recursive-include */locale *
