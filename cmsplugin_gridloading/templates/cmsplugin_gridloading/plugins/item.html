@@ -1,0 +1,20 @@
+{# Item for a ItemCMSPlugin instance #}
+<li>
+    {% with link=instance.get_link instance=instance.image %}
+    {% if link %}
+        <a href="{{ link }}"{% if instance.target %} target="{{ instance.target }}"{% endif %}>
+            {% if image %}
+                {% with srcset=gridloading.srcset %}{% include 'cmsplugin_gridloading/plugins/includes/image.html' %}{% endwith %}
+            {% else %}
+                {{ instance.link_text }}
+            {% endif %}
+        </a>
+    {% elif image %}
+        {% with srcset=gridloading.srcset %}{% include 'cmsplugin_gridloading/plugins/includes/image.html' %}{% endwith %}
+    {% endif %}
+{% endwith %}
+
+{% if instance.content %}
+    <div class="grid-item-content"><div>{{ instance.content|safe }}</div></div>
+{% endif %}
+</li>

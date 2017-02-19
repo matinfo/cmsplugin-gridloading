@@ -1,0 +1,43 @@
+{% load i18n cms_tags shuffle sekizai_tags staticfiles %}
+
+<ul id="gridloading-{{ instance.pk }}"
+    class="gridloading {{ instance.effect }} {{ instance.extra_styles }}"
+    >
+    {% with gridloading=instance %}
+    {% if instance.shuffle %}
+        {% for plugin in instance.child_plugin_instances|shuffle %}
+            {% render_plugin plugin %}
+        {% endfor %}
+    {% else %}
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+</ul>
+
+{% addtoblock "css" %}<link rel="stylesheet" href="{% static 'cmsplugin_gridloading/css/gridloading.css' %}">{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{% static 'cmsplugin_gridloading/js/modernizr.custom.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{% static 'cmsplugin_gridloading/js/masonry.pkgd.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{% static 'cmsplugin_gridloading/js/imagesloaded.pkgd.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{% static 'cmsplugin_gridloading/js/classie.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script src="{% static 'cmsplugin_gridloading/js/AnimOnScroll.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}
+<script>
+    new AnimOnScroll(document.getElementById("gridloading-{{ instance.pk }}"), {
+        minDuration : 0.4,
+        maxDuration : 0.7,
+        viewportFactor : 0.2
+    });
+
+    $(document).ready(function () {
+        $('.gridloading li .grid-item-content').each(function () {
+            $(this).hide();
+            $(this).bind('hover', function() {
+                item.show();
+            });
+
+        });
+    });
+</script>
+{% endaddtoblock %}

@@ -1,0 +1,4 @@
+djangocms-helper
+pysqlite
+coverage
+

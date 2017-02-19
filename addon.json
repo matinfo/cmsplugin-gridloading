@@ -1,0 +1,6 @@
+{
+    "package-name": "cmsplugin-gridloading",
+    "installed-apps": [
+        "cmsplugin_gridloading"
+    ]
+}
