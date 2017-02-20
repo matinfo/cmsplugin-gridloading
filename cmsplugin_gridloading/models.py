@@ -22,6 +22,7 @@ import djangocms_text_ckeditor.fields
 from djangocms_attributes_field.fields import AttributesField
 
 from . import compat, constants
+from .utils import get_additional_effect
 
 
 if compat.LTE_DJANGO_1_6:
@@ -51,7 +52,7 @@ class GridloadingPlugin(CMSPlugin):
 
     effect = models.CharField(
         verbose_name=_('CSS Effect'),
-        choices=constants.EFFECT_CHOICES,
+        choices=constants.EFFECT_CHOICES + get_additional_effect(),
         default=constants.EFFECT_DEFAULT,
         max_length=255,
     )

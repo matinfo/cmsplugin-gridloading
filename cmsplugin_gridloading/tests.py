@@ -1,15 +1,21 @@
 # -*- coding: utf-8 -*-
+import os
+
 from django.template.loader import get_template, render_to_string
 from django.test.utils import override_settings
-import os
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.core.files import File as DjangoFile
 
 from cms import api
-from cms.models import CMSPlugin
-from cms.test_utils.testcases import BaseCMSTestCase, URL_CMS_PLUGIN_ADD, URL_CMS_PLUGIN_EDIT
+from cms.models.pluginmodel import CMSPlugin
+from cms.test_utils.testcases import (
+    BaseCMSTestCase,
+    URL_CMS_PLUGIN_ADD,
+    URL_CMS_PLUGIN_EDIT
+)
 from cms.utils import get_cms_setting
 
 from filer.models import Folder, Image, File
@@ -63,31 +69,34 @@ class GridloadingPluginTestCase(TestCase, BaseCMSTestCase):
 
     def test_add_gridloading_plugin_api(self):
         gridloading_plugin = api.add_plugin(
-            self.placeholder, cms_plugins.GridloadingCMSPlugin, self.language,
-            duration=123,
+            self.placeholder,
+            cms_plugins.GridloadingCMSPlugin,
+            self.language,
+            effect='opacity',
         )
         self.assertTrue(models.GridloadingPlugin.objects.filter(
-            pk=gridloading_plugin.pk).exists()
-        )
+            pk=gridloading_plugin.pk).exists())
 
-        slide_plugin = api.add_plugin(
-            self.placeholder, cms_plugins.GridloadingItemCMSPlugin, \
-                self.language, target=gridloading_plugin,
-            url='https://google.com/',
+        item_plugin = api.add_plugin(
+            self.placeholder,
+            cms_plugins.GridloadingItemCMSPlugin,
+            self.language,
+            target=gridloading_plugin,
+            link_url='https://google.com/',
         )
         self.assertTrue(models.GridloadingItemPlugin.objects.filter(
-            pk=slide_plugin.pk).exists()
-        )
+            pk=item_plugin.pk).exists())
 
         folder = self.create_populated_filer_folder()
-        slide_folder_plugin = api.add_plugin(
-            self.placeholder, cms_plugins.GridloadingItemFolderCMSPlugin, \
-                self.language, target=gridloading_plugin,
+        item_folder_plugin = api.add_plugin(
+            self.placeholder,
+            cms_plugins.GridloadingItemFolderCMSPlugin,
+            self.language,
+            target=gridloading_plugin,
             folder=folder
         )
         self.assertTrue(models.GridloadingItemFolderPlugin.objects.filter(
-            pk=slide_folder_plugin.pk).exists()
-        )
+            pk=item_folder_plugin.pk).exists())
 
     def test_add_gridloading_plugin_client(self):
         self.client.login(username=self.su_username, password=self.su_password)
@@ -107,7 +116,7 @@ class GridloadingPluginTestCase(TestCase, BaseCMSTestCase):
 
         # Child Plugin
         plugin_data = {
-            'plugin_type': 'ItemCMSPlugin',
+            'plugin_type': 'GridloadingItemCMSPlugin',
             'plugin_language': self.language,
             'placeholder_id': self.placeholder.pk,
             'plugin_parent': CMSPlugin.objects.all()[0].pk,
@@ -116,4 +125,4 @@ class GridloadingPluginTestCase(TestCase, BaseCMSTestCase):
         response = self.client.post(URL_CMS_PLUGIN_ADD, plugin_data)
         self.assertEqual(response.status_code, 200)
         # this should really be the below test... but it turns out to be tricky to do
-        # self.assertTrue(models.ItemPlugin.objects.exists())
+        # self.assertTrue(models.GridloadingItemPlugin.objects.exists())

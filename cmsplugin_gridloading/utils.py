@@ -1,7 +1,7 @@
 from django.conf import settings
 
 
-def get_additional_styles():
+def get_additional_effect():
     """
     Get additional effect choices from settings
     """

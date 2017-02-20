@@ -3,11 +3,15 @@ HELPER_SETTINGS = {
     'INSTALLED_APPS': [
         'filer',
         'easy_thumbnails',
-        'cmsplugin_gridloading',
     ],
-    'TEMPLATE_CONTEXT_PROCESSORS': [
-        'aldryn_boilerplates.context_processors.boilerplate',
-    ],
+    'ALLOWED_HOSTS': ['localhost'],
+    'CMS_LANGUAGES': {
+        1: [{
+            'code': 'en',
+            'name': 'English',
+        }]
+    },
+    'LANGUAGE_CODE': 'en',
     'STATICFILES_FINDERS': [
         'django.contrib.staticfiles.finders.FileSystemFinder',
         # important! place right before django.contrib.staticfiles.finders.AppDirectoriesFinder
@@ -21,3 +25,10 @@ HELPER_SETTINGS = {
         'django.template.loaders.app_directories.Loader',
     ],
 }
+
+def run():
+    from djangocms_helper import runner
+    runner.cms('cmsplugin_gridloading')
+
+if __name__ == '__main__':
+    run()
