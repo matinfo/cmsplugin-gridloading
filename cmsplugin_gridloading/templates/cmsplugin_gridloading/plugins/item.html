@@ -1,20 +1,18 @@
+{% load staticfiles %}
 {# Item for a ItemCMSPlugin instance #}
 <li>
-    {% with link=instance.get_link instance=instance.image %}
-    {% if link %}
-        <a href="{{ link }}"{% if instance.target %} target="{{ instance.target }}"{% endif %}>
-            {% if image %}
-                {% with srcset=gridloading.srcset %}{% include 'cmsplugin_gridloading/plugins/includes/image.html' %}{% endwith %}
-            {% else %}
-                {{ instance.link_text }}
-            {% endif %}
+{% with link=instance.get_link instance=instance.image content=instance.content link_target=instance.link_target %}
+    {% if link and image %}
+        <a href="{{ link }}"{% if link_target %} target="{{ link_target }}"{% endif %}>
+            {% with srcset=gridloading.srcset %}{% include 'cmsplugin_gridloading/plugins/includes/image.html' %}{% endwith %}
         </a>
     {% elif image %}
         {% with srcset=gridloading.srcset %}{% include 'cmsplugin_gridloading/plugins/includes/image.html' %}{% endwith %}
     {% endif %}
-{% endwith %}
 
-{% if instance.content %}
-    <div class="grid-item-content"><div>{{ instance.content|safe }}</div></div>
-{% endif %}
+    {# text bloc or image overlay content #}
+    {% if content %}
+        <div class="{% if not image %}grid-item-content{% else %}grid-item-overlay{% endif %}"><div>{{ content|safe }}</div></div>
+    {% endif %}
+{% endwith %}
 </li>

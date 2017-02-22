@@ -1,4 +1,4 @@
-{% load i18n cms_tags shuffle sekizai_tags staticfiles %}
+{% load cms_tags shuffle sekizai_tags staticfiles %}
 
 <ul id="gridloading-{{ instance.pk }}"
     class="gridloading {{ instance.effect }} {{ instance.extra_styles }}"
@@ -28,16 +28,6 @@
         minDuration : 0.4,
         maxDuration : 0.7,
         viewportFactor : 0.2
-    });
-
-    $(document).ready(function () {
-        $('.gridloading li .grid-item-content').each(function () {
-            $(this).hide();
-            $(this).bind('hover', function() {
-                item.show();
-            });
-
-        });
     });
 </script>
 {% endaddtoblock %}

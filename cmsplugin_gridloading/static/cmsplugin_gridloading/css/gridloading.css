@@ -1,7 +1,7 @@
 .gridloading {
 	max-width: 69em;
 	list-style: none;
-	margin: 30px auto;
+	margin: 0 auto;
 	padding: 0;
 }
 
@@ -223,18 +223,51 @@
 }
 
 /* custom hover text */
-
-.gridloading .grid-item-content {
-	position: relative;
+.gridloading li img {
+    -webkit-transition: all .35s;
+    transition: all .35s;
 }
-.gridloading .grid-item-content > div {
+.gridloading li:hover img {
+    filter: brightness(.6);
+    -webkit-filter: brightness(.6);
+}
+.gridloading .grid-item-overlay {
+       position: relative;
+}
+.gridloading li .grid-item-overlay > div {
     background-color: #efefef;
-    opacity: .6;
+    opacity: 0;
     padding: 10px 0px 0px 10px;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     color: rgba(10, 10, 10, 0.9);
-    font-weight: bold;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-bottom: 1px solid #FFF;
+    border-top: 1px solid #FFF;
+    -webkit-transition: opacity .35s, -webkit-transform .35s;
+	-ms-transition: opacity .35s, -ms-transform .35s;
+	transition: opacity .35s,transform .35s;
+    -webkit-transform: scale(0, 1);
+	-ms-transform: scale(0, 1);
+    transform: scale(0, 1);
+
+}
+.gridloading li:hover .grid-item-overlay > div {
+	opacity: .6;
+	-webkit-transform: scale(1, 1);
+	-ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+
+.gridloading .grid-item-content > div {
+	background-color: #efefef;
+    padding: 2px 10px 2px 10px;
+    width: 100%;
+	height: 100%;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: 0; */
+    color: rgba(10, 10, 10, 0.9);
 }

@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 HELPER_SETTINGS = {
-    'TIME_ZONE': 'Europe/Zurich',
     'INSTALLED_APPS': [
-        'filer',
         'easy_thumbnails',
+        'filer',
+        'mptt',
     ],
     'ALLOWED_HOSTS': ['localhost'],
     'CMS_LANGUAGES': {

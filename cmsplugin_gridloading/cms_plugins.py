@@ -31,7 +31,6 @@ class GridloadingChildBase(GridloadingBase):
     parent_classes = ['GridloadingCMSPlugin']
 
     def render(self, context, instance, placeholder):
-        # get style from parent plugin, render chosen template
         context['instance'] = instance
         context['image'] = instance.image
         return context
@@ -91,8 +90,7 @@ class GridloadingItemCMSPlugin(GridloadingChildBase):
         (_('Link settings'), {
             'classes': ('collapse',),
             'fields': (
-                ('link_url', 'link_page',),
-                ('link_text', 'link_target'),
+                ('link_url', 'link_page', 'link_target'),
             )
         }),
     )
@@ -105,13 +103,12 @@ class GridloadingItemFolderCMSPlugin(GridloadingChildBase):
     """
     Item folder Plugin
     """
-    name = _('Gridloading item(s) folder')
+    name = _('Gridloading folder')
     model = GridloadingItemFolderPlugin
     cache = False
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance
-
         context['gridloading_template'] = self.get_item_template(instance=instance, \
             name='image_item')
         return context

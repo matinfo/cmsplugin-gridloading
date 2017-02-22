@@ -107,6 +107,7 @@ class GridloadingPlugin(CMSPlugin):
                 crop = False
             items[device['identifier']] = {
                 'size': (width, height),
+                'size_portrait': (height, width),
                 'size_str': '{}x{}'.format(width, height),
                 'width_str': '{}w'.format(width),
                 # 'subject_location': self.file.subject_location,
@@ -115,7 +116,7 @@ class GridloadingPlugin(CMSPlugin):
                 'aspect_ratio': (aspect_width, aspect_height),
                 'width_tag': width_tag,
             }
-
+        #import pdb; pdb.set_trace()
         return items
 
 
@@ -140,11 +141,6 @@ class GridloadingItemPlugin(CMSPlugin):
         max_length=100,
         blank=True,
         choices=constants.TARGET_CHOICES,
-    )
-    link_text = models.CharField(
-        verbose_name=_('Link text'),
-        max_length=200,
-        blank=True
     )
 
     def __str__(self):
