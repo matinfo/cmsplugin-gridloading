@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-23 08:41-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Mathieu Meylan <m.meylan@gmail.com>, 2017\n"
+"Language-Team: French (https://www.transifex.com/matinfo/teams/72173/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/cms_plugins.py:19
+#: cmsplugin-gridloading/cmsplugin_gridloading/cms_plugins.py:48
+msgid "Gridloading"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/cms_plugins.py:76
+msgid "Gridloading item"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/cms_plugins.py:89
+msgid "Link settings"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/cms_plugins.py:106
+msgid "Gridloading folder"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:10
+msgid "Opacity"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:11
+msgid "Move Up"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:12
+msgid "Scale Up"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:13
+msgid "Fall Perspective"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:14
+msgid "Fly"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:15
+msgid "Flip"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:16
+msgid "Helix"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:17
+msgid "Pop Up"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:21
+msgid "Open in new window"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:22
+msgid "Open in same window"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:23
+msgid "Delegate to parent"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:24
+msgid "Delegate to top"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:48
+msgid "Large"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:49
+msgid "Medium"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:50
+msgid "Small"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:51
+msgid "Extra Small"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:57
+msgid "Mobile phones"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:64
+msgid "Tablets"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:71
+msgid "Laptops"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/constants.py:78
+msgid "Large desktops"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:53
+msgid "Loading effect"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:59
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:78
+msgid "Aspect ratio"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:64
+msgid ""
+"Determines width and height of the image according to the selected ratio. "
+"All images will be with same size. Not select ratio to maintain portrait/"
+"landscape of image."
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:69
+msgid "Extra styles"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:70
+msgid "An arbitrary string of CSS classes to add"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:77
+msgid "Effect"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:129
+msgid "Image"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:130
+msgid "Content"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:131
+msgid "Link"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:133
+msgid "Page"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:136
+msgid "A link to a page has priority over a text link."
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:139
+msgid "Target"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:182
+msgid "Folder"
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:183
+msgid "Show all the image(s) include in the selected folder."
+msgstr ""
+
+#: cmsplugin-gridloading/cmsplugin_gridloading/models.py:189
+msgid "<folder is missing>"
+msgstr ""

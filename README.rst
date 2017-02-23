@@ -3,35 +3,35 @@ cmsplugin-gridloading
 =====================
 
 **django CMS Grid Loading** is a set of plugins for `django CMS <http://django-cms.org>`_
-that allow you to publish Cascading Grid layout (image or text block) wall
-using `Masonry <http://masonry.desandro.com>`_ library, + grid CSS loading effects
-from `AnimOnScroll <http://www.codrops.com>`_.
+that allow you to publish Cascading Grid layout (image or text block)
+using `Masonry <http://masonry.desandro.com>`_ wall library, plus grid loading effects
+with `AnimOnScroll <http://www.codrops.com>`_.
 
-The choice of loading bloc from 8 predefined CSS effect: Opacity, Move Up,
-Scale Up, Fall Perspective, Fly, Flip, Helix, Pop Up. 
+Possibility to set ratio for images by wall. The wall of 3 columns is full responsive.
 
-Possibility to set ratios for images, plus overlay content label or if not image
-added to element then add text bloc using the rich text editor.
+Possibility to choose the loading of blocs from 8 predefined effect: Opacity,
+Move Up, Scale Up, Fall Perspective, Fly, Flip, Helix, Pop Up. 
+
+If you select image by image, in this case the ``content`` become the overlay
+on mouse hover of the image, otherwise ``content`` become a text bloc.
+
+Image item permit to add link and corresponding target.
+
+The ``content`` is added using the Django CMS default rich text editor.
 
 It uses files managed by `Django Filer <https://github.com/divio/django-filer>`_.
 The plugins allow you to select a single image by image or an entire folder of images.
-
-If you select image by image, in this case the ``content`` become the overlay
-on mouse hover of the image.
-
-Image item permit to add link and coresponding target. The wall of 3 collumns is
-full responsive.
 
 This addon is compatible with `Divio Cloud <http://divio.com>`_ and is also available on the
 `django CMS Marketplace <https://marketplace.django-cms.org/en/addons/browse/cmsplugin-gridloading/>`_
 for easy installation.
 
-Grid Loading is build on the principle of plugin-in-plugin provided by django-cms
+Grid Loading is built on the principle of plugin-in-plugin provided by django-cms
 since version 3.0.
 
 .. image:: example.png
 
-Useful to create photowall for example.
+Useful to create photo wall for example.
 
 To see all grid loading effects: https://tympanus.net/Development/GridLoadingEffects/
 
@@ -74,17 +74,16 @@ Configuration
 Note that the provided templates are very minimal by design. You are encouraged
 to adapt and override them to your project's requirements.
 
-This addon provides a 8 ``default`` effect using CSS3 for all instances. You can provide
-additional effect choices by adding a ``GRIDLOADING_EFFECT`` setting::
+You can provide additional effect choices by adding a ``GRIDLOADING_EFFECTS`` setting::
 
-    GRIDLOADING_EFFECT = [
+    GRIDLOADING_EFFECTS = [
         ('new-css3-effect', _('New CSS 3 Effect')),
     ]
 
-Your CSS effect need setup for example like this:
+Your CSS effect need setup for example like this::
 
-```
-.gridloading.new-css3-effect {
-    ...
-}
-```
+.. code-block:: css
+
+    .gridloading.new-css3-effect {
+        ...
+    }

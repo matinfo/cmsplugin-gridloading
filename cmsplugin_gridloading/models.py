@@ -21,27 +21,8 @@ from filer.fields.image import FilerImageField
 import djangocms_text_ckeditor.fields
 from djangocms_attributes_field.fields import AttributesField
 
-from . import compat, constants
-from .utils import get_additional_effect
-
-
-if compat.LTE_DJANGO_1_6:
-    # related_name='%(app_label)s_%(class)s' does not work on  Django 1.6
-    CMSPluginField = partial(
-        models.OneToOneField,
-        to=CMSPlugin,
-        related_name='+',
-        parent_link=True,
-    )
-else:
-    # Once djangoCMS < 3.3.1 support is dropped
-    # Remove the explicit cmsplugin_ptr field declarations
-    CMSPluginField = partial(
-        models.OneToOneField,
-        to=CMSPlugin,
-        related_name='%(app_label)s_%(class)s',
-        parent_link=True,
-    )
+from . import constants
+from .utils import get_additional_effects
 
 
 
@@ -49,10 +30,9 @@ class GridloadingPlugin(CMSPlugin):
     """
     Gridloading: "Wrapper" Model
     """
-
     effect = models.CharField(
-        verbose_name=_('CSS Effect'),
-        choices=constants.EFFECT_CHOICES + get_additional_effect(),
+        verbose_name=_('Loading effect'),
+        choices=constants.EFFECT_CHOICES + get_additional_effects(),
         default=constants.EFFECT_DEFAULT,
         max_length=255,
     )
@@ -63,13 +43,12 @@ class GridloadingPlugin(CMSPlugin):
         default='',
         max_length=255,
         help_text=_('Determines width and height of the image '
-                    'according to the selected ratio.'),
+                    'according to the selected ratio. All images will be with '
+                    'same size. Not select ratio to maintain portrait/landscape of image.'),
     )
     extra_styles = models.CharField(
         _('Extra styles'), max_length=50, blank=True,
         help_text=_('An arbitrary string of CSS classes to add'))
-
-    cmsplugin_ptr = CMSPluginField()
 
     def __str__(self):
         data = django.forms.models.model_to_dict(self)
@@ -107,7 +86,6 @@ class GridloadingPlugin(CMSPlugin):
                 crop = False
             items[device['identifier']] = {
                 'size': (width, height),
-                'size_portrait': (height, width),
                 'size_str': '{}x{}'.format(width, height),
                 'width_str': '{}w'.format(width),
                 # 'subject_location': self.file.subject_location,
@@ -125,8 +103,6 @@ class GridloadingItemPlugin(CMSPlugin):
     """
     Gridloading: "Item" Model
     """
-    cmsplugin_ptr = CMSPluginField()
-
     image = FilerImageField(verbose_name=_('Image'), blank=True, null=True)
     content = HTMLField(verbose_name=_('Content'), blank=True, default='')
     link_url = models.URLField(_("Link"), blank=True, null=True)
@@ -164,6 +140,7 @@ class GridloadingItemPlugin(CMSPlugin):
     def copy_relations(self, oldinstance):
         self.image_id = oldinstance.image_id
         self.link_page_id = oldinstance.link_page_id
+        self.link_target_id = oldinstance.link_target_id
 
     def get_link(self):
         link = self.link_url or u''
@@ -177,7 +154,7 @@ class GridloadingItemFolderPlugin(CMSPlugin):
     """
     Gridloading: "Image folder" Model
     """
-    cmsplugin_ptr = CMSPluginField()
+    #cmsplugin_ptr = CMSPluginField()
 
     folder = FilerFolderField(verbose_name=_('Folder'), \
         help_text=_('Show all the image(s) include in the selected folder.'))

@@ -5,7 +5,6 @@ from django.conf import settings
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from .forms import GridloadingPluginForm
 from .models import GridloadingPlugin, GridloadingItemPlugin, GridloadingItemFolderPlugin
 
 
@@ -48,7 +47,7 @@ class GridloadingCMSPlugin(GridloadingBase):
     """
     name = _('Gridloading')
     model = GridloadingPlugin
-    form = GridloadingPluginForm
+    #form = GridloadingPluginForm
     render_template = 'cmsplugin_gridloading/plugins/base.html'
     allow_children = True
     child_classes = [
@@ -90,7 +89,8 @@ class GridloadingItemCMSPlugin(GridloadingChildBase):
         (_('Link settings'), {
             'classes': ('collapse',),
             'fields': (
-                ('link_url', 'link_page', 'link_target'),
+                ('link_url', 'link_page'),
+                ('link_target'),
             )
         }),
     )

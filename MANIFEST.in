@@ -1,5 +1,6 @@
 include LICENSE.txt
 include README.rst
+recursive-include cmsplugin_gridloading/locale *
 recursive-include cmsplugin_gridloading/static *
 recursive-include cmsplugin_gridloading/templates *
-ecursive-exclude * *.pyc
+recursive-exclude * *.pyc
