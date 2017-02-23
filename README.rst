@@ -82,8 +82,6 @@ You can provide additional effect choices by adding a ``GRIDLOADING_EFFECTS`` se
 
 Your CSS effect need setup for example like this::
 
-.. code-block:: css
-
     .gridloading.new-css3-effect {
         ...
     }
