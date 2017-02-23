@@ -2,8 +2,6 @@
 from __future__ import unicode_literals, absolute_import
 
 import collections
-from functools import partial
-
 
 import django.forms.models
 from django.db import models
@@ -25,7 +23,6 @@ from . import constants
 from .utils import get_additional_effects
 
 
-
 class GridloadingPlugin(CMSPlugin):
     """
     Gridloading: "Wrapper" Model
@@ -42,9 +39,9 @@ class GridloadingPlugin(CMSPlugin):
         blank=True,
         default='',
         max_length=255,
-        help_text=_('Determines width and height of the image '
-                    'according to the selected ratio. All images will be with '
-                    'same size. Not select ratio to maintain portrait/landscape of image.'),
+        help_text=_('Determines width and height of the image according to the '
+                    'selected ratio. All images will be with same size. '
+                    'Not select ratio to maintain portrait/landscape of image.'),
     )
     extra_styles = models.CharField(
         _('Extra styles'), max_length=50, blank=True,

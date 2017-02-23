@@ -8,14 +8,10 @@ from cms.plugin_pool import plugin_pool
 from .models import GridloadingPlugin, GridloadingItemPlugin, GridloadingItemFolderPlugin
 
 
-
 class GridloadingBase(CMSPluginBase):
     """
     Base Classes
     """
-    class Meta:
-        abstract = True
-
     module = _('Gridloading')
 
 
@@ -23,9 +19,6 @@ class GridloadingChildBase(GridloadingBase):
     """
     Base Child Plugin
     """
-    class Meta:
-        abstract = True
-
     require_parent = True
     parent_classes = ['GridloadingCMSPlugin']
 
@@ -47,7 +40,6 @@ class GridloadingCMSPlugin(GridloadingBase):
     """
     name = _('Gridloading')
     model = GridloadingPlugin
-    #form = GridloadingPluginForm
     render_template = 'cmsplugin_gridloading/plugins/base.html'
     allow_children = True
     child_classes = [
@@ -63,10 +55,6 @@ class GridloadingCMSPlugin(GridloadingBase):
             )
         }),
     )
-
-    def render(self, context, instance, placeholder):
-        context['instance'] = instance
-        return context
 
 
 class GridloadingItemCMSPlugin(GridloadingChildBase):
@@ -101,7 +89,7 @@ class GridloadingItemCMSPlugin(GridloadingChildBase):
 
 class GridloadingItemFolderCMSPlugin(GridloadingChildBase):
     """
-    Item folder Plugin
+    Folder Plugin
     """
     name = _('Gridloading folder')
     model = GridloadingItemFolderPlugin
