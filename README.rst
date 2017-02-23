@@ -7,15 +7,15 @@ that allow you to publish Cascading Grid layout (image or text block)
 using `Masonry <http://masonry.desandro.com>`_ wall library, plus grid loading effects
 with `AnimOnScroll <http://www.codrops.com>`_.
 
-Possibility to set ratio for images by wall. The wall of 3 columns is full responsive.
+Possibility to set ratio for images by grid. The grid of 3 columns is full responsive.
 
-Possibility to choose the loading of blocs from 8 predefined effect: Opacity,
+Possibility to choose the loading of grid item from 8 predefined effect: Opacity,
 Move Up, Scale Up, Fall Perspective, Fly, Flip, Helix, Pop Up. 
 
 If you select image by image, in this case the ``content`` become the overlay
 on mouse hover of the image, otherwise ``content`` become a text bloc.
 
-Image item permit to add link and corresponding target.
+Image item permit to add link (url or CMS page) and corresponding target.
 
 The ``content`` is added using the Django CMS default rich text editor.
 
