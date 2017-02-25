@@ -52,6 +52,7 @@ class GridloadingCMSPlugin(GridloadingBase):
             'fields': (
                 'effect',
                 'aspect_ratio',
+                'extra_styles',
             )
         }),
     )
