@@ -137,7 +137,6 @@ class GridloadingItemPlugin(CMSPlugin):
     def copy_relations(self, oldinstance):
         self.image_id = oldinstance.image_id
         self.link_page_id = oldinstance.link_page_id
-        self.link_target_id = oldinstance.link_target_id
 
     def get_link(self):
         link = self.link_url or u''
