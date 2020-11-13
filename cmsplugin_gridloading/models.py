@@ -100,7 +100,7 @@ class GridloadingItemPlugin(CMSPlugin):
     """
     Gridloading: "Item" Model
     """
-    image = FilerImageField(verbose_name=_('Image'), blank=True, null=True)
+    image = FilerImageField(verbose_name=_('Image'), blank=True, null=True, on_delete=models.CASCADE)
     content = HTMLField(verbose_name=_('Content'), blank=True, default='')
     link_url = models.URLField(_("Link"), blank=True, null=True)
     link_page = PageField(
@@ -153,7 +153,7 @@ class GridloadingItemFolderPlugin(CMSPlugin):
     #cmsplugin_ptr = CMSPluginField()
 
     folder = FilerFolderField(verbose_name=_('Folder'), \
-        help_text=_('Show all the image(s) include in the selected folder.'))
+        help_text=_('Show all the image(s) include in the selected folder.'), on_delete=models.CASCADE)
 
     def __str__(self):
         if self.folder_id:
