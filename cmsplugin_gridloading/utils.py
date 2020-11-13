@@ -8,9 +8,9 @@ def get_additional_effects():
     choices = []
     raw = getattr(settings, 'GRIDLOADING_EFFECTS', False)
     if raw:
-        if isinstance(raw, basestring):
+        if isinstance(raw, str):
             raw = raw.split(',')
         for choice in raw:
-            clean = choice.strip()
+            clean = str(choice).strip()
             choices.append((clean.lower(), clean.title()))
     return choices
